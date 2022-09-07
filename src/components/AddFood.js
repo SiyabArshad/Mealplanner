@@ -10,6 +10,53 @@ import Line from './Line'
 export default function AddFood({name}) {
     const [expand1,setexpand1]=React.useState(false)
     const [expand2,setexpand2]=React.useState(false)
+    const [tab,settab]=React.useState("COLAZIONE")
+    const foodsinfo=[
+        {
+            category:"COLAZIONE"
+        },
+        {
+            category:"COLAZIONE"
+        },
+        {
+            category:"COLAZIONE"
+        },
+        {
+            category:"PRANZO"
+        },
+        ,
+        {
+            category:"PRANZO"
+        },
+        ,
+        {
+            category:"CENA"
+        },
+        {
+            category:"CENA"
+        },
+        {
+            category:"CENA"
+        },
+        {
+            category:"CENA"
+        },
+        {
+            category:"SPUNTINO"
+        },
+    ]
+    const [fooditems,setfooditems]=React.useState([])
+    const controller=new AbortController()
+    const filterfunction=()=>{
+        setfooditems(foodsinfo.filter((item)=>item.category===tab))
+    }
+    React.useEffect(()=>{
+        filterfunction()
+    return()=>{
+        controller.abort()
+    }
+  },[tab])
+    
     //start single comp
     const Singlecomp=({nm})=>{
         return(
@@ -24,47 +71,35 @@ export default function AddFood({name}) {
             <View style={styles.cardch2}>
                 <View style={styles.items}>
                    {/**item card start */}
-                    <ImageBackground resizeMode='cover' imageStyle={{ borderRadius: RFPercentage(3)}} style={styles.editeditem} source={require("../Assets/itemno1.png")}>
-                   <View style={styles.itemch1}>
-                   <TouchableOpacity style={styles.itembtns}>
-                   <Icon2 name='arrow-left-circle' color={colors.black} size={24}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.itembtns}>
-                    <Icon2 name='more-vertical' color={colors.black} size={24}/>
-                    </TouchableOpacity>
-                   </View>
-                   <View style={styles.ch2textch1}>
-                        <ImageBackground  style={{
-                        position:"relative",
-                        top:-10,
-                        height:RFPercentage(3),width:RFPercentage(3),display:"flex",
-                        justifyContent:"center",alignItems:"center"}} source={require("../Assets/Star26.png")}>
-                            <Image source={require("../Assets/Cheese.png")}/>
-                        </ImageBackground>
-                        <Text style={styles.itemname}>
-                        Piadine di avocado e mais con salsa bianca 
-                        </Text>
-                        <Text style={styles.itemnut}>
-                        300 kcal, 1 porz
-                        </Text>
-                   </View>
-                    </ImageBackground>
-                    {/**item end */}
-                    <ImageBackground resizeMode='cover' imageStyle={{ borderRadius: RFPercentage(3)}} style={styles.editeditem} source={require("../Assets/itemno1.png")}>
-                   <View style={styles.itemch1}>
-                    <TouchableOpacity style={[styles.itembtns,{backgroundColor:colors.white,opacity:.7}]}>
-                    <Icon2 name='more-vertical' color={colors.black} size={24}/>
-                    </TouchableOpacity>
-                   </View>
-                   <View style={[styles.ch2textch1,{backgroundColor:colors.white,opacity:.7}]}>
-                        <Text style={styles.itemname}>
-                        Piadine di avocado e mais con salsa bianca 
-                        </Text>
-                        <Text style={styles.itemnut}>
-                        300 kcal
-                        </Text>
-                   </View>
-                    </ImageBackground>
+                   {
+                         foodsinfo.filter((ite)=>ite.category===nm).map((item,i)=>(
+                            <ImageBackground key={i} resizeMode='cover' imageStyle={{ borderRadius: RFPercentage(3)}} style={styles.editeditem} source={require("../Assets/itemno1.png")}>
+                            <View style={styles.itemch1}>
+                            <TouchableOpacity style={styles.itembtns}>
+                            <Icon2 name='arrow-left-circle' color={colors.black} size={24}/>
+                             </TouchableOpacity>
+                             <TouchableOpacity style={styles.itembtns}>
+                             <Icon2 name='more-vertical' color={colors.black} size={24}/>
+                             </TouchableOpacity>
+                            </View>
+                            <View style={styles.ch2textch1}>
+                                 <ImageBackground  style={{
+                                 position:"relative",
+                                 top:-10,
+                                 height:RFPercentage(3),width:RFPercentage(3),display:"flex",
+                                 justifyContent:"center",alignItems:"center"}} source={require("../Assets/Star26.png")}>
+                                     <Image source={require("../Assets/Cheese.png")}/>
+                                 </ImageBackground>
+                                 <Text style={styles.itemname}>
+                                 Piadine di avocado e mais con salsa bianca 
+                                 </Text>
+                                 <Text style={styles.itemnut}>
+                                 300 kcal, 1 porz
+                                 </Text>
+                            </View>
+                             </ImageBackground>
+                        ))
+                    }
                     {/**item end */}
                 </View>
                 <View style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
@@ -173,7 +208,7 @@ export default function AddFood({name}) {
             <View style={styles.cardch1}>
             {
                 ["COLAZIONE","PRANZO","CENA","SPUNTINO"].map((item,i)=>(
-                <TouchableOpacity key={i} style={[styles.navbtn,{backgroundColor:colors.white}]}>
+                <TouchableOpacity onPress={()=>settab(item)} key={i} style={[styles.navbtn,{backgroundColor:tab===item?colors.grey2 :colors.white}]}>
                     <Text style={[styles.mediumtext,{fontSize:RFPercentage(1.7)}]}>
                         {item}    
                     </Text>
@@ -184,47 +219,37 @@ export default function AddFood({name}) {
             <View style={styles.cardch2}>
                 <View style={styles.items}>
                    {/**item card start */}
-                    <ImageBackground resizeMode='cover' imageStyle={{ borderRadius: RFPercentage(3)}} style={styles.editeditem} source={require("../Assets/itemno1.png")}>
-                   <View style={styles.itemch1}>
-                   <TouchableOpacity style={styles.itembtns}>
-                   <Icon2 name='arrow-left-circle' color={colors.black} size={24}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.itembtns}>
-                    <Icon2 name='more-vertical' color={colors.black} size={24}/>
-                    </TouchableOpacity>
-                   </View>
-                   <View style={styles.ch2textch1}>
-                        <ImageBackground  style={{
-                        position:"relative",
-                        top:-10,
-                        height:RFPercentage(3),width:RFPercentage(3),display:"flex",
-                        justifyContent:"center",alignItems:"center"}} source={require("../Assets/Star26.png")}>
-                            <Image source={require("../Assets/Cheese.png")}/>
-                        </ImageBackground>
-                        <Text style={styles.itemname}>
-                        Piadine di avocado e mais con salsa bianca 
-                        </Text>
-                        <Text style={styles.itemnut}>
-                        300 kcal, 1 porz
-                        </Text>
-                   </View>
-                    </ImageBackground>
+                    {
+                        fooditems.map((item,i)=>(
+                            <ImageBackground key={i} resizeMode='cover' imageStyle={{ borderRadius: RFPercentage(3)}} style={styles.editeditem} source={require("../Assets/itemno1.png")}>
+                            <View style={styles.itemch1}>
+                            <TouchableOpacity style={styles.itembtns}>
+                            <Icon2 name='arrow-left-circle' color={colors.black} size={24}/>
+                             </TouchableOpacity>
+                             <TouchableOpacity style={styles.itembtns}>
+                             <Icon2 name='more-vertical' color={colors.black} size={24}/>
+                             </TouchableOpacity>
+                            </View>
+                            <View style={styles.ch2textch1}>
+                                 <ImageBackground  style={{
+                                 position:"relative",
+                                 top:-10,
+                                 height:RFPercentage(3),width:RFPercentage(3),display:"flex",
+                                 justifyContent:"center",alignItems:"center"}} source={require("../Assets/Star26.png")}>
+                                     <Image source={require("../Assets/Cheese.png")}/>
+                                 </ImageBackground>
+                                 <Text style={styles.itemname}>
+                                 Piadine di avocado e mais con salsa bianca 
+                                 </Text>
+                                 <Text style={styles.itemnut}>
+                                 300 kcal, 1 porz
+                                 </Text>
+                            </View>
+                             </ImageBackground>
+                        ))
+                    }
                     {/**item end */}
-                    <ImageBackground resizeMode='cover' imageStyle={{ borderRadius: RFPercentage(3)}} style={styles.editeditem} source={require("../Assets/itemno1.png")}>
-                   <View style={styles.itemch1}>
-                    <TouchableOpacity style={[styles.itembtns,{backgroundColor:colors.white,opacity:.7}]}>
-                    <Icon2 name='more-vertical' color={colors.black} size={24}/>
-                    </TouchableOpacity>
-                   </View>
-                   <View style={[styles.ch2textch1,{backgroundColor:colors.white,opacity:.7}]}>
-                        <Text style={styles.itemname}>
-                        Piadine di avocado e mais con salsa bianca 
-                        </Text>
-                        <Text style={styles.itemnut}>
-                        300 kcal
-                        </Text>
-                   </View>
-                    </ImageBackground>
+        
                     {/**item end */}
                 </View>
                 <View style={{display:"flex",alignItems:"center",justifyContent:"center"}}>

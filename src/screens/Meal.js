@@ -5,15 +5,22 @@ import fonts from "../extra/fonts"
 import { RFPercentage } from 'react-native-responsive-fontsize'
 import Icon1 from "react-native-vector-icons/EvilIcons"
 import Icon2 from "react-native-vector-icons/Feather"
+import Icon3 from "react-native-vector-icons/Ionicons"
 import Line from '../components/Line'
 import Food from '../components/Food'
 import Dropdown from '../components/Dropdown'
 import Chart from '../components/Chart'
 import Comments from '../components/Comments'
-export default function Meal() {
+export default function Meal({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
         <StatusBar translucent backgroundColor={"transparent"}></StatusBar>
+        <View style={styles.topnav}>
+            <TouchableOpacity onPress={()=>navigation.navigate("home")}>
+                <Icon3 name='arrow-back' color={colors.black} size={30}/>
+            </TouchableOpacity>
+            <Text style={[styles.semiboldtext,{marginLeft:RFPercentage(2)}]}>Nome piano</Text>
+        </View>
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
         <View style={styles.child1}>
             <View style={styles.ch1cmp1}>
@@ -117,6 +124,13 @@ const styles=StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:colors.white
+    },
+    topnav:{
+        paddingHorizontal:RFPercentage(2),
+        paddingVertical:RFPercentage(1.3),
+        display:"flex",
+        flexDirection:"row",
+        alignItems:"center"
     },
     child1:{
         paddingHorizontal:RFPercentage(2),
