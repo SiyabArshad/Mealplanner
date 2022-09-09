@@ -9,19 +9,41 @@ import Line from '../components/Line'
 import AddFood from '../components/AddFood'
 import Dropdown from '../components/Dropdown'
 import Chart from '../components/Chart'
+import Sharebox from '../components/Sharebox'
+import Detailsbox from '../components/Detailsbox'
+import Eliminationbox from '../components/Eliminationbox'
 export default function AddMeal({navigation}) {
-  return (
+  const[isshareopen,setisshareopen]=React.useState(false)
+  const handeopenclose=(status)=>{
+    setisshareopen(status)
+  }
+  const[isdetailopen,setisdetailopen]=React.useState(false)
+  const handeopenclosedetail=(status)=>{
+    setisdetailopen(status)
+  }
+  const[isdeleteopen,setisdeleteopen]=React.useState(false) 
+  const handeopenclosedelete=(status)=>{
+    setisdeleteopen(status)
+  }  
+    return (
     <SafeAreaView style={styles.container}>
         <StatusBar translucent backgroundColor={"transparent"}></StatusBar>
+        <Sharebox show={isshareopen} closefunc={handeopenclose}/>
+        <Detailsbox show={isdetailopen} closefunc={handeopenclosedetail} closefunc2={handeopenclosedelete}/>
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
+        <Eliminationbox show={isdeleteopen} closefunc={handeopenclosedelete}/>
         <View style={styles.child1}>
             <View style={styles.ch1cmp1}>
                 <View style={styles.ch1text}>
                     <Text style={styles.semiboldtext}>Meal planner</Text>
                 </View>
                 <View style={styles.ch1icons}>
+                    <TouchableOpacity onPress={()=>setisshareopen(true)}>
                     <Icon1 name='share-google' color={colors.black} size={30} />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>setisdetailopen(true)}>
                     <Icon2 name='more-vertical' color={colors.black} size={24}/>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.ch1cmp2}>
@@ -46,13 +68,23 @@ export default function AddMeal({navigation}) {
         </View>
         <Line/>
         {
-            ["Giorno 1","Giorno 2","Giorno 3","Giorno 4","Giorno 5","Giorno 6","Giorno 7"].map((item,i)=>(
+            ["Giorno 1","Giorno 2","Giorno 3","Giorno 4","Giorno 5"].map((item,i)=>(
                     <View key={i}>
                     <AddFood name={item}></AddFood>
                     <Line></Line>
                     </View>
                     ))
         }
+        <View style={{display:"flex",flexDirection:"row",justifyContent:'space-between',paddingHorizontal:RFPercentage(2)
+            ,paddingVertical:RFPercentage(1.5)
+        }}>
+            <Text style={{fontFamily:fonts.PoppinsBold,fontSize:RFPercentage(3),color:colors.grey3}}>Giorno 6</Text>
+            <TouchableOpacity style={{paddingHorizontal:RFPercentage(1.7),paddingVertical:RFPercentage(1.3)
+            ,backgroundColor:colors.green,borderRadius:RFPercentage(1.2)
+            }}>
+                <Text style={{color:colors.white,fontFamily:fonts.PoppinsRegular}}>AGGIUNGI</Text>
+            </TouchableOpacity>
+        </View>
         <View style={styles.bottomsection}>
             <Text style={styles.mdtext}>
             Andamento settimanale

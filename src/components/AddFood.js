@@ -6,11 +6,16 @@ import { RFPercentage } from 'react-native-responsive-fontsize'
 import Icon1 from "react-native-vector-icons/AntDesign"
 import Icon2 from "react-native-vector-icons/Feather"
 import Line from './Line'
-
+import Deletebox from './Deletebox'
 export default function AddFood({name}) {
     const [expand1,setexpand1]=React.useState(false)
     const [expand2,setexpand2]=React.useState(false)
     const [tab,settab]=React.useState("COLAZIONE")
+    const[isdeleteopen,setisdeleteopen]=React.useState(false)
+    const handeopenclosedelete=(status)=>{
+        setisdeleteopen(status)
+      }
+    
     const foodsinfo=[
         {
             category:"COLAZIONE"
@@ -61,6 +66,7 @@ export default function AddFood({name}) {
     const Singlecomp=({nm})=>{
         return(
             <View style={styles.card}>
+                  
             <View style={styles.cardch1}>
                 <TouchableOpacity style={[styles.navbtn,{backgroundColor:colors.white}]}>
                     <Text style={[styles.mediumtext,{fontSize:RFPercentage(1.7)}]}>
@@ -183,12 +189,16 @@ export default function AddFood({name}) {
     //end single comp
   return (
     <View style={styles.container}>
+            <Deletebox show={isdeleteopen} closefunc={handeopenclosedelete}/>
      <View style={styles.ch1}>
                 <View style={styles.ch1text}>
                     <Text style={styles.mediumtext}>{name}</Text>
                 </View>
                 <View style={styles.ch1icons}>
-                    <TouchableOpacity onPress={()=>setexpand1(!expand1)} style={{height:RFPercentage(2.5),width:RFPercentage(2.5),marginRight:RFPercentage(2)}}>
+                    <TouchableOpacity style={{display:name==="Giorno 1"?"none":"flex"}} onPress={()=>setisdeleteopen(true)}>
+                        <Icon1 name='delete' color={colors.black} size={24}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>setexpand1(!expand1)} style={{height:RFPercentage(2.5),width:RFPercentage(2.5),marginHorizontal:RFPercentage(1)}}>
                     <Image style={{height:"100%",width:"100%"}} source={expand1?require("../Assets/greenexpand.png") :require("../Assets/expand.png")}></Image>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>setexpand2(!expand2)}>

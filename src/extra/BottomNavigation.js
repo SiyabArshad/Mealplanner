@@ -9,6 +9,7 @@ import Meal from "../screens/Meal"
 import Iicon from "react-native-vector-icons/Ionicons"
 import MIcon from "react-native-vector-icons/MaterialCommunityIcons"
 import {View,Text,Image} from "react-native"
+import Home from '../screens/Home';
 const Tab = createBottomTabNavigator();
 export default function Bottomnavigation() {
   return (
@@ -30,7 +31,7 @@ screenOptions={{
       }}
 >
       <Tab.Screen 
-name="Community" component={AddMeal} 
+name="Community" component={Home} 
 
 options={{
         tabBarLabel:"Community",
@@ -42,7 +43,7 @@ options={{
         }}
 
       />
-       <Tab.Screen name="Dairy" component={AddMeal} 
+       <Tab.Screen name="Dairy" component={Home} 
 options={{
     tabBarLabel:"Dairy",
           tabBarIcon: ({color,focused}) => (
@@ -53,7 +54,7 @@ options={{
         }}
       />
      
-      <Tab.Screen name="Oreegano" component={Meal}  
+      <Tab.Screen name="startscreen" component={Home}  
       options={{
         tabBarLabel:"My Oreegano",
           tabBarIcon: ({color,focused}) => (
@@ -74,7 +75,7 @@ options={{
           ),
         }}
        />
-      <Tab.Screen name="Groceries" component={AddMeal}
+      <Tab.Screen name="Groceries" component={Home}
       options={{
         tabBarLabel:"Groceries",
           tabBarIcon: ({color,focused}) => (
