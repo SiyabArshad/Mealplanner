@@ -11,10 +11,10 @@ const Stack =createStackNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator  screenOptions={{headerShown: false}}>
-      <Stack.Screen name='home' component={Bottomnavigation}></Stack.Screen>
-      <Stack.Screen name='MealScreen' component={Meal}></Stack.Screen>
-      <Stack.Screen name='addplan' component={Selectplan}></Stack.Screen>
+      <Stack.Navigator  screenOptions={{headerShown: true,headerBackTitleVisible: false,headerTintColor: 'black'}}>
+      <Stack.Screen options={{headerShown:false}}   name='home' component={Bottomnavigation}></Stack.Screen>
+      <Stack.Screen  options={{title:"Piano standard 7 giorni"}} name='MealScreen' component={Meal}></Stack.Screen>
+      <Stack.Screen  options={{title:"Select Plan"}}  name='addplan' component={Selectplan}></Stack.Screen>
       </Stack.Navigator>
       </NavigationContainer>
     )

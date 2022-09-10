@@ -15,12 +15,6 @@ export default function Meal({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
         <StatusBar translucent backgroundColor={"transparent"}></StatusBar>
-        <View style={styles.topnav}>
-            <TouchableOpacity onPress={()=>navigation.navigate("Planner")}>
-                <Icon3 name='arrow-back' color={colors.black} size={30}/>
-            </TouchableOpacity>
-            <Text style={[styles.semiboldtext,{marginLeft:RFPercentage(2)}]}>Nome piano</Text>
-        </View>
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
         <View style={styles.child1}>
             <View style={styles.ch1cmp1}>

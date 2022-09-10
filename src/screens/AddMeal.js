@@ -1,4 +1,4 @@
-import { View, Text,TouchableOpacity,StyleSheet,ImageBackground,Image,ScrollView,FlatList,SafeAreaView, StatusBar } from 'react-native'
+import { View, Text,TouchableOpacity,StyleSheet,ImageBackground,Dimensions,Image,ScrollView,FlatList,SafeAreaView, StatusBar } from 'react-native'
 import * as React from 'react'
 import colors from "../extra/colors"
 import fonts from "../extra/fonts"
@@ -12,36 +12,73 @@ import Chart from '../components/Chart'
 import Sharebox from '../components/Sharebox'
 import Detailsbox from '../components/Detailsbox'
 import Eliminationbox from '../components/Eliminationbox'
+import Deletebox from '../components/Deletebox'
+import { Modalize } from 'react-native-modalize';
+
 export default function AddMeal({navigation}) {
-  const[isshareopen,setisshareopen]=React.useState(false)
-  const handeopenclose=(status)=>{
-    setisshareopen(status)
-  }
-  const[isdetailopen,setisdetailopen]=React.useState(false)
-  const handeopenclosedetail=(status)=>{
-    setisdetailopen(status)
-  }
-  const[isdeleteopen,setisdeleteopen]=React.useState(false) 
-  const handeopenclosedelete=(status)=>{
-    setisdeleteopen(status)
-  }  
+    const modalizeshareRef = React.useRef(null);
+    const onshareOpen = () => {
+        modalizeshareRef.current?.open();
+      };
+      const onshareclose = () => {
+        modalizeshareRef.current?.close();
+      };
+//hooks for delete modal
+const modalizedeleteRef = React.useRef(null);
+const ondeleteOpen = () => {
+    modalizedeleteRef.current?.open();
+  };
+  const ondeleteclose = () => {
+    modalizedeleteRef.current?.close();
+  };
+//end delete modal hooks
+//hooks for detail modal
+const modalizedetailRef = React.useRef(null);
+const ondetailOpen = () => {
+    modalizedetailRef.current?.open();
+  };
+  const ondetailclose = () => {
+    modalizedetailRef.current?.close();
+  };
+//end detail modal hooks
+//hooks for detail modal
+const modalizeelemRef = React.useRef(null);
+const onelemOpen = () => {
+    modalizeelemRef.current?.open();
+  };
+  const onelemclose = () => {
+    modalizeelemRef.current?.close();
+  };
+//end detail modal hooks
+
+  
     return (
     <SafeAreaView style={styles.container}>
         <StatusBar translucent backgroundColor={"transparent"}></StatusBar>
-        <Sharebox show={isshareopen} closefunc={handeopenclose}/>
-        <Detailsbox show={isdetailopen} closefunc={handeopenclosedetail} closefunc2={handeopenclosedelete}/>
+        <Modalize adjustToContentHeight={true} ref={modalizeshareRef} >
+        <Sharebox closefunc={onshareclose}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizedeleteRef} >
+        <Deletebox/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizedetailRef} >
+        <Detailsbox closefunc={ondetailclose} openfunc={onelemOpen}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizeelemRef} >
+        <Eliminationbox closefunc={onelemclose}/>
+        </Modalize>
+        
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
-        <Eliminationbox show={isdeleteopen} closefunc={handeopenclosedelete}/>
         <View style={styles.child1}>
             <View style={styles.ch1cmp1}>
                 <View style={styles.ch1text}>
                     <Text style={styles.semiboldtext}>Meal planner</Text>
                 </View>
                 <View style={styles.ch1icons}>
-                    <TouchableOpacity onPress={()=>setisshareopen(true)}>
+                    <TouchableOpacity onPress={onshareOpen}>
                     <Icon1 name='share-google' color={colors.black} size={30} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>setisdetailopen(true)}>
+                    <TouchableOpacity onPress={()=>ondetailOpen()}>
                     <Icon2 name='more-vertical' color={colors.black} size={24}/>
                     </TouchableOpacity>
                 </View>
@@ -70,7 +107,7 @@ export default function AddMeal({navigation}) {
         {
             ["Giorno 1","Giorno 2","Giorno 3","Giorno 4","Giorno 5"].map((item,i)=>(
                     <View key={i}>
-                    <AddFood name={item}></AddFood>
+                    <AddFood name={item} ondeleteOpen={ondeleteOpen} ondeleteClose={ondeleteclose}></AddFood>
                     <Line></Line>
                     </View>
                     ))

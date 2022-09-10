@@ -7,15 +7,12 @@ import Icon1 from "react-native-vector-icons/AntDesign"
 import Icon2 from "react-native-vector-icons/Feather"
 import Line from './Line'
 import Deletebox from './Deletebox'
-export default function AddFood({name}) {
+import { Modalize } from 'react-native-modalize';
+
+export default function AddFood({name,ondeleteOpen,ondeleteClose}) {
     const [expand1,setexpand1]=React.useState(false)
     const [expand2,setexpand2]=React.useState(false)
     const [tab,settab]=React.useState("COLAZIONE")
-    const[isdeleteopen,setisdeleteopen]=React.useState(false)
-    const handeopenclosedelete=(status)=>{
-        setisdeleteopen(status)
-      }
-    
     const foodsinfo=[
         {
             category:"COLAZIONE"
@@ -189,13 +186,12 @@ export default function AddFood({name}) {
     //end single comp
   return (
     <View style={styles.container}>
-            <Deletebox show={isdeleteopen} closefunc={handeopenclosedelete}/>
      <View style={styles.ch1}>
                 <View style={styles.ch1text}>
                     <Text style={styles.mediumtext}>{name}</Text>
                 </View>
                 <View style={styles.ch1icons}>
-                    <TouchableOpacity style={{display:name==="Giorno 1"?"none":"flex"}} onPress={()=>setisdeleteopen(true)}>
+                    <TouchableOpacity style={{display:name==="Giorno 1"?"none":"flex"}} onPress={ondeleteOpen}>
                         <Icon1 name='delete' color={colors.black} size={24}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>setexpand1(!expand1)} style={{height:RFPercentage(2.5),width:RFPercentage(2.5),marginHorizontal:RFPercentage(1)}}>

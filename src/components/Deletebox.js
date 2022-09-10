@@ -9,51 +9,31 @@ import Line from './Line'
 // config
 import Colors from '../extra/colors';
 
-export default function Deletebox({show,closefunc}) {
+export default function Deletebox() {
   return (
-    <Modal visible={show} transparent={true} style={style.mnmodal} >
-            <View style={style.child1} >
                 <View style={style.card} >
-                    <TouchableOpacity onPress={()=>closefunc(false)}>
+                    <TouchableOpacity>
                     <Text style={style.text1}>
                     Svuota giorno
                     </Text>
                     </TouchableOpacity>
                     <Line/>
-                    <TouchableOpacity onPress={()=>closefunc(false)}>
+                    <TouchableOpacity>
                     <Text style={style.text1}>
                     Elimina giornata dal menù
                     </Text>
                     </TouchableOpacity>
                 </View>
-            </View>
-        </Modal>
-  )
+        )
 }
 
 const style=StyleSheet.create({
-    mnmodal:{ 
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-     },
-     child1:{ 
-    marginTop: (windowHeight / 2) - 50,
-      width: "100%",
-      borderRadius: 10,
-      justifyContent: 'center',
-      alignItems: 'center' 
-    },
     card:{
-         elevation: 5,
-         shadowColor:Colors.black,
-         shadowOffset:{width:2,height:5},
-         shadowOpacity:0.7,
-         shadowRadius:5,
-          width: "70%",
-            borderTopLeftRadius:RFPercentage(2),
-            borderTopRightRadius:RFPercentage(2),
+          width: "100%",
+          borderTopLeftRadius:RFPercentage(2),
+          borderTopRightRadius:RFPercentage(2),
           backgroundColor: Colors.white,
+          paddingBottom:RFPercentage(5)
      },
      text1:{
         fontFamily:fonts.PoppinsRegular,

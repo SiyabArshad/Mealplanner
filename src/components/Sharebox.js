@@ -9,14 +9,12 @@ import Line from './Line'
 // config
 import Colors from '../extra/colors';
 
-function Sharebox({ show,closefunc }) {
+function Sharebox({closefunc}) {
     const [checkedindex, setCheckedindex] = React.useState();
     return (
-        <Modal visible={show} transparent={true} style={style.mnmodal} >
-            <View style={style.child1} >
                 <View style={style.card} >
                     <View style={{marginBottom:RFPercentage(1)}}>
-                    <TouchableOpacity onPress={()=>closefunc(false)}>
+                    <TouchableOpacity onPress={()=>closefunc()}>
                         <Icon1 name='close' size={24} color={Colors.black}/>
                     </TouchableOpacity>
                     </View>
@@ -48,30 +46,12 @@ function Sharebox({ show,closefunc }) {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View>
-        </Modal>
+            
     );
 }
 const style=StyleSheet.create({
-mnmodal:{ 
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
- },
- child1:{ 
-marginTop: (windowHeight / 2) - 50,
-  width: "100%",
-  borderRadius: 10,
-  justifyContent: 'center',
-  alignItems: 'center' 
-},
 card:{
-     elevation: 5,
-     shadowColor:Colors.black,
-     shadowOffset:{width:2,height:5},
-     shadowOpacity:0.7,
-     shadowRadius:5,
-      width: "70%",
+      width: "100%",
        minHeight: RFPercentage(20),
         borderTopLeftRadius:RFPercentage(2),
         borderTopRightRadius:RFPercentage(2),

@@ -30,9 +30,6 @@ export default function Selectplan({navigation}) {
   return (
   <SafeAreaView style={style.container}>
      <StatusBar translucent backgroundColor={"transparent"}></StatusBar>
-     <TouchableOpacity onPress={()=>navigation.navigate("startscreen")} style={{marginLeft:RFPercentage(1.5)}}>
-            <Icon3 name='chevron-back' color={colors.black} size={30}/>
-        </TouchableOpacity>
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
         <Text style={style.text1}>
         crea un piano

@@ -9,11 +9,8 @@ import Line from './Line'
 // config
 import Colors from '../extra/colors';
 
-function Eliminationbox({ show,closefunc }) {
-   
+function Eliminationbox({ closefunc }) {
     return (
-        <Modal visible={show} transparent={true} style={style.mnmodal} >
-            <View style={style.child1} >
                 <View style={style.card} >
                 <View>
                     <Text style={style.headtext}>
@@ -24,38 +21,19 @@ function Eliminationbox({ show,closefunc }) {
                     </Text>
                 </View>
                 <View style={{display:"flex",flexDirection:"row",justifyContent:"center",marginVertical:RFPercentage(1)}}>
-                        <TouchableOpacity style={style.btn1} onPress={()=>closefunc(false)}>
+                        <TouchableOpacity style={style.btn1} onPress={()=>closefunc()}>
                             <Text style={style.btntext1}>Annulla</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={style.btn} onPress={()=>closefunc(false)}>
+                        <TouchableOpacity style={style.btn} onPress={()=>closefunc()}>
                             <Text style={style.btntext}>Elimina</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View>
-        </Modal>
     );
 }
 const style=StyleSheet.create({
-mnmodal:{ 
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
- },
- child1:{ 
-marginTop: (windowHeight / 2) - 50,
-  width: "100%",
-  borderRadius: 10,
-  justifyContent: 'center',
-  alignItems: 'center' 
-},
 card:{
-     elevation: 5,
-     shadowColor:Colors.black,
-     shadowOffset:{width:2,height:5},
-     shadowOpacity:0.7,
-     shadowRadius:5,
-      width: "70%",
+      width: "100%",
        minHeight: RFPercentage(20),
        borderRadius:RFPercentage(2),
        backgroundColor: Colors.white,

@@ -10,15 +10,13 @@ import Line from './Line'
 import Colors from '../extra/colors';
 import { color } from 'react-native-reanimated';
 import colors from '../extra/colors';
-export default function Detailsbox({show,closefunc,closefunc2}) {  
+export default function Detailsbox({closefunc,openfunc}) {  
 
     return (
     <>
-    <Modal visible={show} transparent={true} style={style.mnmodal} >
-    <View style={style.child1} >
         <View style={style.card} >
             <View style={{marginVertical:RFPercentage(1),  paddingHorizontal:RFPercentage(2)}}>
-            <TouchableOpacity onPress={()=>closefunc(false)}>
+            <TouchableOpacity onPress={()=>closefunc()}>
                 <Icon1 name='close' size={24} color={Colors.black}/>
             </TouchableOpacity>
             </View>
@@ -47,8 +45,8 @@ export default function Detailsbox({show,closefunc,closefunc2}) {
             <Line/>
             <TouchableOpacity onPress={()=>
                 {
-                closefunc(false)
-                closefunc2(true)
+                closefunc()
+                openfunc()
             }
                 } style={style.items}>
             <Icon1 name='delete' size={20} color={colors.black}/>    
@@ -75,32 +73,13 @@ export default function Detailsbox({show,closefunc,closefunc2}) {
                 </TouchableOpacity>
             </View>
         </View>
-    </View>
-</Modal>
 </>
   )
 }
 
 const style=StyleSheet.create({
-    mnmodal:{ 
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-     },
-     child1:{ 
-    marginTop: (windowHeight / 2) -200,
-      width: "100%",
-      borderRadius: 10,
-      justifyContent: 'center',
-      alignItems: 'center' 
-    },
     card:{
-         elevation: 5,
-         shadowColor:Colors.black,
-         shadowOffset:{width:2,height:5},
-         shadowOpacity:0.7,
-         shadowRadius:5,
-          width: "70%",
+          width: "100%",
            minHeight: RFPercentage(20),
             borderTopLeftRadius:RFPercentage(2),
             borderTopRightRadius:RFPercentage(2),
