@@ -8,6 +8,8 @@ const colors={
     purple:"#C76CE8",
     orange:"#FF7300",
     magenta:"#D31930",
-    brown:"#E2DAD4"
+    brown:"#E2DAD4",
+    transgrey:"rgba(220, 227, 225,0.5)",
+    transgrey2:"rgba(220, 227, 225,0.7)"
 }
 export default colors

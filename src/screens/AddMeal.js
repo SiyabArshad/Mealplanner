@@ -14,7 +14,6 @@ import Detailsbox from '../components/Detailsbox'
 import Eliminationbox from '../components/Eliminationbox'
 import Deletebox from '../components/Deletebox'
 import { Modalize } from 'react-native-modalize';
-
 export default function AddMeal({navigation}) {
     const modalizeshareRef = React.useRef(null);
     const onshareOpen = () => {

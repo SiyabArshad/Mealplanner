@@ -6202,6 +6202,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
+"react-native-animated-ruler@^1.1.1":
+  "integrity" "sha512-jIzTXTvxVPpEL9boTuKzxkmsmoKU9OtCu3J23y7lHUXHRWk+qIj7LQJ6NUS8Xx45FE/zMj5aORj2tn35YH6oTQ=="
+  "resolved" "https://registry.npmjs.org/react-native-animated-ruler/-/react-native-animated-ruler-1.1.1.tgz"
+  "version" "1.1.1"
+
 "react-native-asset@^2.0.1":
   "integrity" "sha512-rhMnbRiGFXWs0nvZZ4SxmwsdiGs15EfTFLszPZT8uCPTwdO/AAlZ284Kf8S+evbmql3kQcajKGWFx2EUGDlOqg=="
   "resolved" "https://registry.npmjs.org/react-native-asset/-/react-native-asset-2.0.1.tgz"
@@ -6905,6 +6910,11 @@
     "ansi-styles" "^4.0.0"
     "astral-regex" "^2.0.0"
     "is-fullwidth-code-point" "^3.0.0"
+
+"slide-ruler@^1.2.1":
+  "integrity" "sha512-Ips20KmgfBBRTauT5n/vfW2UcK0P/f5TibF8ZwUBBb/ryle3q4B2cxm/PMCZ4XzxdEhiT+Bkbn0+Z1QNh+XgrA=="
+  "resolved" "https://registry.npmjs.org/slide-ruler/-/slide-ruler-1.2.1.tgz"
+  "version" "1.2.1"
 
 "snapdragon-node@^2.0.1":
   "integrity" "sha512-O27l4xaMYt/RSQ5TR3vpWCAB5Kb/czIcqUFOM/C4fYcLnbZUc1PkjTAMjof2pBWaSTwOUd6qUHcFGVGj7aIwnw=="
