@@ -9,7 +9,7 @@ import Line from './Line'
 import Deletebox from './Deletebox'
 import { Modalize } from 'react-native-modalize';
 
-export default function AddFood({name,ondeleteOpen,ondeleteClose}) {
+export default function AddFood({name,ondeleteOpen,ondeleteClose,onswapOpen,onnutOpen,navigation}) {
     const [expand1,setexpand1]=React.useState(false)
     const [expand2,setexpand2]=React.useState(false)
     const [tab,settab]=React.useState("COLAZIONE")
@@ -78,10 +78,10 @@ export default function AddFood({name,ondeleteOpen,ondeleteClose}) {
                          foodsinfo.filter((ite)=>ite.category===nm).map((item,i)=>(
                             <ImageBackground key={i} resizeMode='cover' imageStyle={{ borderRadius: RFPercentage(3)}} style={styles.editeditem} source={require("../Assets/itemno1.png")}>
                             <View style={styles.itemch1}>
-                            <TouchableOpacity style={styles.itembtns}>
-                            <Icon2 name='arrow-left-circle' color={colors.black} size={24}/>
+                            <TouchableOpacity style={styles.itembtns} onPress={onswapOpen}>
+                            <Icon1 name='swap' color={colors.black} size={24}/>
                              </TouchableOpacity>
-                             <TouchableOpacity style={styles.itembtns}>
+                             <TouchableOpacity style={styles.itembtns} onPress={onnutOpen}>
                              <Icon2 name='more-vertical' color={colors.black} size={24}/>
                              </TouchableOpacity>
                             </View>
@@ -106,7 +106,7 @@ export default function AddFood({name,ondeleteOpen,ondeleteClose}) {
                     {/**item end */}
                 </View>
                 <View style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-                <TouchableOpacity style={{width:RFPercentage(4),height:RFPercentage(4),borderRadius:RFPercentage(1.5),backgroundColor:colors.green,display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <TouchableOpacity onPress={()=>navigation.navigate("additemtoplan")} style={{width:RFPercentage(4),height:RFPercentage(4),borderRadius:RFPercentage(1.5),backgroundColor:colors.green,display:"flex",justifyContent:"center",alignItems:"center"}}>
                 <Icon1 name='plus' color={colors.white} size={24}/>
                 </TouchableOpacity>
                 </View>
@@ -229,10 +229,10 @@ export default function AddFood({name,ondeleteOpen,ondeleteClose}) {
                         fooditems.map((item,i)=>(
                             <ImageBackground key={i} resizeMode='cover' imageStyle={{ borderRadius: RFPercentage(3)}} style={styles.editeditem} source={require("../Assets/itemno1.png")}>
                             <View style={styles.itemch1}>
-                            <TouchableOpacity style={styles.itembtns}>
-                            <Icon2 name='arrow-left-circle' color={colors.black} size={24}/>
+                            <TouchableOpacity style={styles.itembtns} onPress={onswapOpen}>
+                            <Icon1 name='swap' color={colors.black} size={24}/>
                              </TouchableOpacity>
-                             <TouchableOpacity style={styles.itembtns}>
+                             <TouchableOpacity style={styles.itembtns} onPress={onnutOpen}>
                              <Icon2 name='more-vertical' color={colors.black} size={24}/>
                              </TouchableOpacity>
                             </View>
@@ -259,7 +259,7 @@ export default function AddFood({name,ondeleteOpen,ondeleteClose}) {
                     {/**item end */}
                 </View>
                 <View style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-                <TouchableOpacity style={{width:RFPercentage(4),height:RFPercentage(4),borderRadius:RFPercentage(1.5),backgroundColor:colors.green,display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <TouchableOpacity onPress={()=>navigation.navigate("additemtoplan")}  style={{width:RFPercentage(4),height:RFPercentage(4),borderRadius:RFPercentage(1.5),backgroundColor:colors.green,display:"flex",justifyContent:"center",alignItems:"center"}}>
                 <Icon1 name='plus' color={colors.white} size={24}/>
                 </TouchableOpacity>
                 </View>
@@ -416,7 +416,7 @@ const styles=StyleSheet.create({
     itemch1:{
         display:"flex",
         flexDirection:"row",
-        justifyContent:'flex-end'
+        justifyContent:'space-between'
     },
     itembtns:{
         backgroundColor:colors.brown,

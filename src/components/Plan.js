@@ -7,13 +7,15 @@ import Icon1 from "react-native-vector-icons/AntDesign"
 import Icon2 from "react-native-vector-icons/Feather"
 import Line from './Line'
 export default function Plan() {
-  return (
+    return (
     <View style={[style.card,style.boxshadow]}>
-      <View style={style.child1}>
+       <View style={style.child1}>
             <Text style={style.txt1}>Plan Name</Text>
             <Image resizeMode='cover' source={require("../Assets/lightstar.png")}/>
       </View>
-      <View style={style.child2}>
+      
+      <View style={style.child3}>
+        <View style={{width:"65%"}}>
         <View style={[style.row]}>
             <TouchableOpacity style={{
                 backgroundColor:'rgba(0, 171, 110,0.2 )',paddingHorizontal:RFPercentage(.9),paddingVertical:RFPercentage(.4)
@@ -28,22 +30,29 @@ export default function Plan() {
                 <Text style={{color:colors.orange,fontFamily:fonts.PoppinsRegular,fontSize:RFPercentage(1.3)}}>VITAMINA D</Text>
             </TouchableOpacity>
         </View>
-        <View style={style.row}>
-            <Text style={{fontFamily:fonts.PoppinsRegular}}>Giant:</Text>
-            <Text style={{marginLeft:RFPercentage(.5),fontFamily:fonts.PoppinsMedium}}>3</Text>
-        </View>
-      </View>
-      <View style={style.child3}>
-        <Text style={{color:colors.black,fontFamily:fonts.PoppinsLight,textAlign:"justify",fontSize:RFPercentage(1.6)}}>
+        <Text style={{color:colors.black,fontFamily:fonts.PoppinsLight,textAlign:"justify",marginTop:RFPercentage(1),fontSize:RFPercentage(1.6)}}>
         Questa è la descrizione che vedrà l’utente a cui non interessa in prima battuta le Kcal perché food lover..
         </Text>
-      </View>
-      <View style={{display:"flex",flexDirection:"row",flexWrap:'wrap',paddingLeft:RFPercentage(1.6),marginVertical:RFPercentage(.5)}}>
+        </View>
+        <View style={{display:"flex",flexDirection:"row",flexWrap:'wrap',width:"40%",paddingLeft:RFPercentage(1.6),marginVertical:RFPercentage(.5)}}>
         {
-            [1,2,3,4,5,7].map((item,i)=>(
+            [1,2,3,4].map((item,i)=>(
                 <Image key={i} resizeMode='cover' style={{width:RFPercentage(6),height:RFPercentage(6),borderRadius:RFPercentage(.5),marginBottom:RFPercentage(.5),marginRight:RFPercentage(.5)}} source={require("../Assets/foods.png")}/>
             ))
         }
+      </View>
+      </View>
+        <Line/>
+        <View style={style.child2}>
+
+        <View style={style.row}>
+            <Text style={{fontFamily:fonts.PoppinsRegular}}>Durata:</Text>
+            <Text style={{marginLeft:RFPercentage(.5),fontFamily:fonts.PoppinsMedium}}>5gg</Text>
+        </View>
+        <View style={style.row}>
+            <Text style={{fontFamily:fonts.PoppinsRegular}}>Calorie medie:</Text>
+            <Text style={{marginLeft:RFPercentage(.5),fontFamily:fonts.PoppinsMedium}}>1900</Text>
+        </View>
       </View>
     </View>
   )
@@ -84,13 +93,18 @@ const style=StyleSheet.create({
         paddingHorizontal:RFPercentage(1.6),
         display:'flex',
         flexDirection:'row',
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        marginVertical:RFPercentage(1)
         
     },
     child3:{
         paddingHorizontal:RFPercentage(1.6),
         paddingVertical:RFPercentage(.8),
-        marginVertical:RFPercentage(1)
+        marginVertical:RFPercentage(1),
+        display:"flex",
+        flexDirection:"row",
+        justifyContent:"space-between",
+        overflow:"hidden"
         
     }
 })

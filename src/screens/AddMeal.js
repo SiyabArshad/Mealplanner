@@ -13,7 +13,11 @@ import Sharebox from '../components/Sharebox'
 import Detailsbox from '../components/Detailsbox'
 import Eliminationbox from '../components/Eliminationbox'
 import Deletebox from '../components/Deletebox'
+import Swap from '../components/Swap'
 import { Modalize } from 'react-native-modalize';
+import Nutreints from '../components/Nutreints'
+import SelectDay from '../components/SelectDay'
+import Mealmodal from '../components/Mealmodal'
 export default function AddMeal({navigation}) {
     const modalizeshareRef = React.useRef(null);
     const onshareOpen = () => {
@@ -49,8 +53,42 @@ const onelemOpen = () => {
     modalizeelemRef.current?.close();
   };
 //end detail modal hooks
-
-  
+//swap modalize hook
+const modalizeswapRef = React.useRef(null);
+    const onswapOpen = () => {
+        modalizeswapRef.current?.open();
+      };
+      const onswapclose = () => {
+        modalizeswapRef.current?.close();
+      };
+//end swap
+//Nutreint modalize hook
+const modalizenutRef = React.useRef(null);
+    const onnutOpen = () => {
+        modalizenutRef.current?.open();
+      };
+      const onnutclose = () => {
+        modalizenutRef.current?.close();
+      };
+//end 
+//slect day modalize hook
+const modalizedayRef = React.useRef(null);
+    const ondayOpen = () => {
+        modalizedayRef.current?.open();
+      };
+      const ondayclose = () => {
+        modalizedayRef.current?.close();
+      };
+//end 
+  //slect meal modalize hook
+const modalizemealRef = React.useRef(null);
+const onmealOpen = () => {
+    modalizemealRef.current?.open();
+  };
+  const onmealclose = () => {
+    modalizemealRef.current?.close();
+  };
+//end 
     return (
     <SafeAreaView style={styles.container}>
         <StatusBar translucent backgroundColor={"transparent"}></StatusBar>
@@ -66,7 +104,18 @@ const onelemOpen = () => {
         <Modalize adjustToContentHeight={true} ref={modalizeelemRef} >
         <Eliminationbox closefunc={onelemclose}/>
         </Modalize>
-        
+        <Modalize adjustToContentHeight={true} ref={modalizeswapRef} >
+        <Swap closefunc={onswapclose}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizenutRef} >
+        <Nutreints closefunc={onnutclose} ondayOpen={ondayOpen}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizedayRef} >
+        <SelectDay onmealOpen={onmealOpen} closefunc={ondayclose}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizemealRef} >
+        <Mealmodal openfunc={onmealOpen} closefunc={onmealclose}/>
+        </Modalize>
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
         <View style={styles.child1}>
             <View style={styles.ch1cmp1}>
@@ -106,7 +155,7 @@ const onelemOpen = () => {
         {
             ["Giorno 1","Giorno 2","Giorno 3","Giorno 4","Giorno 5"].map((item,i)=>(
                     <View key={i}>
-                    <AddFood name={item} ondeleteOpen={ondeleteOpen} ondeleteClose={ondeleteclose}></AddFood>
+                    <AddFood navigation={navigation} name={item} onnutOpen={onnutOpen} ondeleteOpen={ondeleteOpen} ondeleteClose={ondeleteclose} onswapOpen={onswapOpen}></AddFood>
                     <Line></Line>
                     </View>
                     ))

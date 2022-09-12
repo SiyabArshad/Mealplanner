@@ -8,6 +8,7 @@ import {createStackNavigator} from "@react-navigation/stack"
 import Bottomnavigation from './src/extra/BottomNavigation'
 import Additemtoplan from './src/screens/Additemtoplan'
 import Selectplan from './src/screens/Selectplan'
+import Nutritions from './src/screens/Nutritions'
 const Stack =createStackNavigator()
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Stack.Screen options={{headerShown:false}}   name='home' component={Bottomnavigation}></Stack.Screen>
       <Stack.Screen  options={{title:"Piano standard 7 giorni"}} name='MealScreen' component={Meal}></Stack.Screen>
       <Stack.Screen  options={{title:"Select Plan"}}  name='addplan' component={Selectplan}></Stack.Screen>
+      <Stack.Screen  options={{title:""}}  name='nutritions' component={Nutritions}></Stack.Screen>
       <Stack.Screen options={{headerShown:false}} name='additemtoplan' component={Additemtoplan}></Stack.Screen>
       </Stack.Navigator>
       </NavigationContainer>

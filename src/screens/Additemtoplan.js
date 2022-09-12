@@ -16,6 +16,7 @@ import CommunityPlanitem from '../components/CommunityPlanitem'
 import { Modalize } from 'react-native-modalize';
 import Ingredient from '../components/Ingredient'
 import Custom from '../components/Custom'
+import Custom2 from '../components/Custom2'
 export default function Additemtoplan({navigation}) {
     //hooks for filter modal
 const modalizefilterRef = React.useRef(null);
@@ -74,7 +75,7 @@ const onfilterOpen = () => {
             }
             {
               tab==='CUSTOM'&&
-              <Custom/>
+              <Custom2/>
             }
         </ScrollView>
         <View style={style.last}>

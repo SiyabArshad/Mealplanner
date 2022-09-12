@@ -15,7 +15,7 @@ export default function Home({navigation}) {
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
         <Text style={[style.globalpadding,{color:colors.black,fontFamily:fonts.PoppinsSemiBold,fontSize:RFPercentage(2.5),marginVertical:RFPercentage(1)}]}>Meal Planner</Text>
         {
-            0?
+            1?
             <View style={[style.globalpadding,style.child1]}>
             <TopPlan/>
             </View>    
@@ -26,7 +26,7 @@ export default function Home({navigation}) {
                         Non hai nessun piano attivo!
                     </Text>
                     <View style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-                    <TouchableOpacity onPress={()=>navigation.navigate("additemtoplan")} style={style.cplan}>
+                    <TouchableOpacity  style={style.cplan}>
                         <Text style={[style.gtext,{color:colors.black}]}>CREA PLANO</Text>
                     </TouchableOpacity>
                     </View>

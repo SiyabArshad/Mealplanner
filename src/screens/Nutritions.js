@@ -8,13 +8,13 @@ import Icon2 from "react-native-vector-icons/Feather"
 import Icon3 from "react-native-vector-icons/Ionicons"
 import Icon4 from "react-native-vector-icons/MaterialIcons"
 import Ficon from "react-native-vector-icons/MaterialCommunityIcons"
-import Line from './Line'
 import Slider from '@react-native-community/slider';
 import Ruler from 'react-native-animated-ruler';
+import { Line } from 'react-native-svg'
 const g1protein=4//4calories in 1 gram of protein
 const g1carb=4//4calories in 1 gram of carb
 const g1fat=9//9calories in 1 gram of fat
-export default function Custom() {
+export default function Nutritions({navigation}) {
   const[searchval,setsearchval]=React.useState('')
   const[calories,setcalories]=React.useState(0);
   const[carb,setcarb]=React.useState(0);
@@ -34,6 +34,7 @@ export default function Custom() {
     setfat((e/100)*(calories/g1fat))
   }
   return (
+    <SafeAreaView style={{flex:1,backgroundColor:colors.white}}>
     <ScrollView>
     <View style={styles.container}>
     <Text style={styles.text1}>Valori Nutrizionali</Text>
@@ -167,26 +168,37 @@ export default function Custom() {
         <Image style={styles.sliderruler} source={require("../Assets/ruler.png")}/>
         </View>
     </View>
-    <View style={styles.addphoto}>
-      <Text style={styles.text3}>Aggiungi foto</Text>
-      <TouchableOpacity>
-        <Icon1 name='camerao' size={24} color={colors.black}></Icon1>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={{paddingHorizontal:RFPercentage(1.5),paddingVertical:RFPercentage(.8),
+    borderWidth:RFPercentage(.1),borderRadius:RFPercentage(1.2),width:"50%",display:"flex",justifyContent:"center",alignItems:"center"
+    ,borderColor:colors.green,marginVertical:RFPercentage(2)
+    }}>
+        <Text style={{fontFamily:fonts.PoppinsRegular,color:colors.grey3}}>Mostra consigliate</Text>
+    </TouchableOpacity>
     {
         proteinpercentage+fatpercentage+carbpercentage>100 &&
       <Text style={{fontFamily:fonts.PoppinsRegular,color:"red",marginBottom:RFPercentage(10)}}>
       Attento, la somma dei tre parametri non fa 100%
       </Text>
   }
+  <Line/>
+  <View style={{display:"flex",flexDirection:"row",justifyContent:"space-between",marginTop:RFPercentage(2),marginBottom:RFPercentage(3)}}>
+                        <TouchableOpacity style={styles.btn1}>
+                            <Text style={styles.btntext1}>Cancella tutto</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.btn} onPress={()=>navigation.navigate("Planner")}>
+                            <Text style={styles.btntext}>Salva</Text>
+                        </TouchableOpacity>
+    </View>
   </View>
   </ScrollView>
+  </SafeAreaView>
   )
 }
 const styles=StyleSheet.create({
     container:{
       paddingHorizontal:RFPercentage(2),
-      paddingVertical:RFPercentage(1.5)
+      paddingVertical:RFPercentage(1.5),
+      backgroundColor:colors.white
     },
     text1:{
       fontFamily:fonts.PoppinsMedium,
@@ -234,27 +246,34 @@ const styles=StyleSheet.create({
     },
     rulertext:{
       fontFamily:fonts.PoppinsMedium,
-    }
+    },
+    btn1:{
+        width:"40%",
+        backgroundColor:colors.white,
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        borderRadius:RFPercentage(1),
+        paddingHorizontal:RFPercentage(.7),
+        paddingVertical:RFPercentage(1.2),
+     },
+     btntext1:{
+        color:colors.black,
+        fontFamily:fonts.PoppinsMedium
+     },
+     btn:{
+        width:"40%",
+        backgroundColor:colors.black,
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        borderRadius:RFPercentage(1),
+        paddingHorizontal:RFPercentage(.7),
+        paddingVertical:RFPercentage(1.2),
+        marginLeft:RFPercentage(.5)
+     },
+     btntext:{
+        color:colors.white,
+        fontFamily:fonts.PoppinsMedium
+     }
 })
-
-/**
- * extar
- * {/*
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <View style={{width:Dimensions.get("window").width,display:"flex",flexDirection:"row",justifyContent:"space-evenly"}}>
-            <Text style={styles.rulertext}>1397</Text>
-            <Text style={styles.rulertext}>1398</Text>
-            <Text style={styles.rulertext}>1399</Text>
-            <Text style={[styles.rulertext,{color:colors.green}]}>1400</Text>
-            <Text style={styles.rulertext}>1401</Text>
-            <Text style={styles.rulertext}>1402</Text>
-            <Text style={styles.rulertext}>1403</Text>
-          </View>
-      </ScrollView>
-
-    <View style={{display:"flex",justifyContent:"center",width:"100%",alignItems:'center'}}>
-    <Image source={require("../Assets/rulerbars.png")}/>
-    </View>
-      
- * 
- */
