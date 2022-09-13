@@ -15,7 +15,7 @@ export default function Seso({closefunc}) {
   return (
     <View style={style.container}>
       <Text style={style.text1}>Seso</Text>
-      <View style={{display:"flex",flexDirection:"row",marginBottom:RFPercentage(2)}}>
+      <View style={{display:"flex",flexDirection:"row",justifyContent:"space-between",alignItems:"center",marginBottom:RFPercentage(2)}}>
         {
             ["Uomo","Non specifico","Donna"].map((item,i)=>(
                 <TouchableOpacity onPress={()=>setbtn(item)} style={[style.btnss,{borderWidth:item!==btn?RFPercentage(.1):0
@@ -34,7 +34,8 @@ const style=StyleSheet.create({
     container:{
         padding:RFPercentage(2),
         borderTopRightRadius:RFPercentage(2),
-        borderTopLeftRadius:RFPercentage(2)
+        borderTopLeftRadius:RFPercentage(2),
+        marginBottom:RFPercentage(5)
     },
     text1:{
         color:colors.black,
@@ -42,9 +43,9 @@ const style=StyleSheet.create({
         fontFamily:fonts.PoppinsSemiBold,
         marginVertical:RFPercentage(2)
     },btnss:{
+        minWidth:"30%",
         paddingHorizontal:RFPercentage(2),
         paddingVertical:RFPercentage(.8),
-        marginRight:RFPercentage(.5),
         borderRadius:RFPercentage(1.5)
     }
 })

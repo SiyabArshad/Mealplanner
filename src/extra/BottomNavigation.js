@@ -10,6 +10,7 @@ import Iicon from "react-native-vector-icons/Ionicons"
 import MIcon from "react-native-vector-icons/MaterialCommunityIcons"
 import {View,Text,Image} from "react-native"
 import Home from '../screens/Home';
+import Community from '../screens/Community';
 const Tab = createBottomTabNavigator();
 export default function Bottomnavigation() {
   return (
@@ -31,7 +32,7 @@ screenOptions={{
       }}
 >
       <Tab.Screen 
-name="Community" component={Home} 
+name="Community" component={Community} 
 
 options={{
         tabBarLabel:"Community",

@@ -9,7 +9,7 @@ import Icon3 from "react-native-vector-icons/Ionicons"
 import Icon4 from "react-native-vector-icons/Entypo"
 import Line from './Line'
 
-export default function Searchcard() {
+export default function Searchcard({nav}) {
   let [searchhistory,setsearchhistory]=React.useState(["Pizza carbonara","Petto di pollo al limone","Pane fatto in csasa","Pane fatto in casa"])
   const removefunc=(item)=>{
     setsearchhistory(searchhistory.filter((it)=>it!==item))
@@ -23,12 +23,12 @@ export default function Searchcard() {
            {/**search history */}
            {
             searchhistory.map((item,i)=>(
-            <View key={i} style={{marginBottom:RFPercentage(2),display:'flex',flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
+            <TouchableOpacity onPress={()=>nav()} key={i} style={{marginBottom:RFPercentage(2),display:'flex',flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
                 <Text style={{color:colors.black,fontFamily:fonts.PoppinsRegular}}>{item}</Text>
                 <TouchableOpacity onPress={()=>removefunc(item)} style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
                 <Icon1 name='close' size={18} color={colors.black}/>
                 </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
             ))
            }
            {/**search end */}

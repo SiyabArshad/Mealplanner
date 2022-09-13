@@ -14,35 +14,6 @@ import Seso from '../components/Seso'
 import Sport from '../components/Sport'
 import Movement from '../components/Movement'
 export default function Selectplan({navigation}) {
-    const modalizeprofileRef = React.useRef(null);
-    const onprofileOpen = () => {
-        modalizeprofileRef.current?.open();
-      };
-      const onprofileclose = () => {
-        modalizeprofileRef.current?.close();
-      };
-      const modalizesesoRef = React.useRef(null);
-    const onsesoOpen = () => {
-        modalizesesoRef.current?.open();
-      };
-      const onsesoclose = () => {
-        modalizesesoRef.current?.close();
-      };
-      const modalizesportRef = React.useRef(null);
-      const onsportOpen = () => {
-          modalizesportRef.current?.open();
-        };
-        const onsportclose = () => {
-          modalizesportRef.current?.close();
-        };
-        const modalizemovRef = React.useRef(null);
-        const onmovOpen = () => {
-            modalizemovRef.current?.open();
-          };
-          const onmovclose = () => {
-            modalizemovRef.current?.close();
-          };
-      
     const plans=[
         {
         name:"Piano",
@@ -63,18 +34,6 @@ export default function Selectplan({navigation}) {
   return (
   <SafeAreaView style={style.container}>
      <StatusBar translucent backgroundColor={"transparent"}></StatusBar>
-     <Modalize adjustToContentHeight={true} ref={modalizeprofileRef} >
-        <Oreganoprofile navigation={navigation} onmovOpen={onmovOpen} onsportOpen={onsportOpen} onsesoOpen={onsesoOpen} closefunc={onprofileclose}/>
-    </Modalize> 
-    <Modalize adjustToContentHeight={true} ref={modalizesesoRef} >
-        <Seso closefunc={onsesoclose}/>
-    </Modalize>
-    <Modalize adjustToContentHeight={true} ref={modalizesportRef} >
-        <Sport closefunc={onsportclose}/>
-    </Modalize> 
-    <Modalize adjustToContentHeight={true} ref={modalizemovRef} >
-        <Movement closefunc={onmovclose}/>
-    </Modalize> 
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
         <Text style={style.text1}>
         crea un piano
@@ -82,7 +41,7 @@ export default function Selectplan({navigation}) {
 
             {
                 plans.map((item,i)=>(
-            <TouchableOpacity onPress={onprofileOpen} key={i}>
+            <TouchableOpacity onPress={()=>navigation.navigate("profile")} key={i}>
             <ImageBackground   source={item.url} style={style.card}>
             <Text style={style.toptext}>{item.name}</Text>
             <Text style={style.bottomtext}>{item.desc}</Text>

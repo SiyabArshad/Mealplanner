@@ -60,7 +60,7 @@ export default function Nutritions({navigation}) {
   stepHeight={40}
   normalColor='#999999'
   normalHeight={20}
-  backgroundColor={colors.grey1}
+  backgroundColor={colors.white}
   numberFontFamily='System'
   numberSize={40}
   numberColor='#000000'

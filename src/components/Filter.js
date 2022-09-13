@@ -45,7 +45,7 @@ let kitchen={
 }
   return (
     <View style={style.container}>
-        <ScrollView horizontal={false} showsVerticalScrollIndicator={false}>
+        <ScrollView style={{marginBottom:RFPercentage(10)}}  horizontal={false} showsVerticalScrollIndicator={false}>
         <TouchableOpacity onPress={closefunc} style={style.topbtn}>
             <Icon1 name='close' size={24} color={colors.black}/>
         </TouchableOpacity>
