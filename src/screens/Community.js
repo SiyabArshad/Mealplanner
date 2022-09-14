@@ -37,6 +37,16 @@ export default function Community({navigation}) {
 {
     Section2()
 }
+<Line/>
+{
+    Section3()
+}
+{
+    Section4()
+}
+{
+    Section5()
+}
 </ScrollView>
    }
     </SafeAreaView>
@@ -76,9 +86,10 @@ const Section1=()=>{
                 <Icon3 name='chevron-forward-outline' size={24} color={colors.green} />
                 </View>
             </View>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View style={style.grid}>
             {
-                [1,2].map((item,i)=>(
+                [1,2,3,4].map((item,i)=>(
                     <View key={i}>
                     <View style={{display:"flex",flexDirection:"row",alignItems:"center",marginVertical:RFPercentage(.8),marginHorizontal:RFPercentage(.3)}}>
                         <ImageBackground style={{height:20,width:20,borderRadius:10,backgroundColor:colors.black}}/>
@@ -111,12 +122,14 @@ const Section1=()=>{
                                     })
                                  }
                                  </View>
+                                 
                             </View>
     </ImageBackground>
     </View>
                 ))
             }
             </View>
+            </ScrollView>
         </View>
     )
 }
@@ -132,9 +145,10 @@ const Section2=()=>{
                 <Icon3 name='chevron-forward-outline' size={24} color={colors.green} />
                 </View>
             </View>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View style={style.grid}>
             {
-                [1,2].map((item,i)=>(
+                [1,2,3,4].map((item,i)=>(
                     <View key={i}>
                     <View style={{display:"flex",flexDirection:"row",alignItems:"center",marginVertical:RFPercentage(.8),marginHorizontal:RFPercentage(.3)}}>
                         <ImageBackground style={{height:20,width:20,borderRadius:10,backgroundColor:colors.black}}/>
@@ -183,10 +197,89 @@ const Section2=()=>{
                 ))
             }
             </View>
+            </ScrollView>
         </View>
     )
 }
 //end section2
+//start section3
+const Section3=()=>{
+    return(
+        <View style={[style.section1,{marginTop:RFPercentage(2)}]}>
+            <View style={style.section1text}>
+                <Text style={style.boldone}>Utenti del mese</Text>
+                <View style={style.sec2}>
+                <Text style={[style.regtext,{color:colors.green}]}>vedi tutte</Text>
+                <Icon3 name='chevron-forward-outline' size={24} color={colors.green} />
+                </View>
+            </View>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View style={style.grid}>
+            {
+                [1,2,3,4,5,6,7,8].map((item,i)=>(
+                    <View key={i} style={{width:RFPercentage(11),
+                    marginRight:RFPercentage(.5),display:"flex",alignItems:"center"
+                    ,justifyContent:"center"}}>
+                        <Image style={{width:RFPercentage(8),height:RFPercentage(8),borderRadius:RFPercentage(2)}} source={require("../Assets/user2.png")}/>
+                        <Text style={{fontFamily:fonts.PoppinsRegular,textAlign:"center",marginTop:RFPercentage(.5),fontSize:RFPercentage(1.5)}}>Hidekazu Tokeyo</Text>
+                     </View>   
+                ))
+            }
+            </View>
+            </ScrollView>
+        </View>
+    )
+}
+//end section3
+//start section4
+const Section4=()=>{
+    return(
+        <ImageBackground style={{width:"100%",height:RFPercentage(20),marginVertical:RFPercentage(.5)}} source={require("../Assets/part.png")}>
+            <Text style={{width:"50%",fontFamily:fonts.PoppinsBold,fontSize:RFPercentage(3),margin:RFPercentage(1.5),color:colors.white}}>
+            Partecipa al questionario
+            </Text>
+            <View style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <TouchableOpacity style={{marginTop:RFPercentage(2),width:"40%",backgroundColor:colors.black,paddingVertical:RFPercentage(1),
+                paddingHorizontal:RFPercentage(2),display:"flex",justifyContent:"center",alignItems:"center",
+                borderRadius:RFPercentage(1)
+                
+                }}>
+                    <Text style={{color:colors.white,fontSize:RFPercentage(2)}}>Tasto</Text>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
+    )
+}
+//end section4
+//start section5
+const Section5=()=>{
+    return(
+        <View style={{margin:RFPercentage(1)}}>
+            <Text style={{fontSize:RFPercentage(1.9),marginVertical:RFPercentage(.5),fontFamily:fonts.PoppinsMedium}}>
+            Scopri di più
+            </Text>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <View style={style.grid}>
+                {
+                    [1,2,3,4,5].map((item,i)=>(
+                        <View key={i} style={{width:RFPercentage(30),marginRight:RFPercentage(1),height:RFPercentage(15)}}>
+        <ImageBackground imageStyle={{borderRadius:RFPercentage(2.5)}} style={{width:"100%",height:"100%",marginVertical:RFPercentage(.5),display:"flex",
+    justifyContent:"center",alignItems:"center"
+    }} source={require("../Assets/oranges.png")}>
+            <Text style={{fontFamily:fonts.PoppinsMedium,color:colors.white}}>
+            La frutta invernale
+            </Text>
+        </ImageBackground>
+        </View>
+                    ))
+                }
+                </View>
+            </ScrollView>
+        </View>
+    )
+}
+
+//end section5
 const style=StyleSheet.create({
     container:{
         flex:1,
@@ -260,7 +353,6 @@ const style=StyleSheet.create({
     grid:{
         display:"flex",
         flexDirection:"row",
-        flexWrap:"wrap",
         marginBottom:RFPercentage(2)
     },
     sec2p1:{
