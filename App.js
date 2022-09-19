@@ -11,6 +11,7 @@ import Selectplan from './src/screens/Selectplan'
 import Nutritions from './src/screens/Nutritions'
 import Profile from './src/screens/Profile'
 import Result from './src/screens/Result'
+import History from './src/screens/History'
 const Stack =createStackNavigator()
 export default function App() {
   return (
@@ -21,8 +22,10 @@ export default function App() {
       <Stack.Screen  options={{title:"Select Plan"}}  name='addplan' component={Selectplan}></Stack.Screen>
       <Stack.Screen  options={{title:""}}  name='nutritions' component={Nutritions}></Stack.Screen>
       <Stack.Screen  options={{title:"Profilo"}}  name='profile' component={Profile}></Stack.Screen>
+      <Stack.Screen  options={{title:"Calendario"}}  name='history' component={History}></Stack.Screen>
       <Stack.Screen  options={{title:"Risultati ricerca"}}  name='result' component={Result}></Stack.Screen>
       <Stack.Screen options={{headerShown:false}} name='additemtoplan' component={Additemtoplan}></Stack.Screen>
+      
       </Stack.Navigator>
       </NavigationContainer>
     )

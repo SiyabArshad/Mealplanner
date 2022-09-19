@@ -9,7 +9,7 @@ import Line from './Line'
 import Deletebox from './Deletebox'
 import { Modalize } from 'react-native-modalize';
 
-export default function AddFood({name,ondeleteOpen,ondeleteClose,onswapOpen,onnutOpen,navigation}) {
+export default function Foodsection({name,ondeleteOpen,ondeleteClose,onswapOpen,onnutOpen,navigation}) {
     const [expand1,setexpand1]=React.useState(false)
     const [expand2,setexpand2]=React.useState(false)
     const [tab,settab]=React.useState("COLAZIONE")
@@ -172,7 +172,18 @@ export default function AddFood({name,ondeleteOpen,ondeleteClose,onswapOpen,onnu
                         </Text>
                     </View>
                     
-                    <Text style={styles.nuptext2}>*Valori giornalieri percentuali basati su una dieta di 2000 calorie</Text>
+                    <Text style={styles.nuptext2}>
+                    *Valori giornalieri percentuali basati sul tuo fabbisogno di (Val Anamnesi) calorie
+                    </Text>
+                <Line/>
+                <View style={{display:"flex",flexDirection:"row",alignItems:"center",marginVertical:RFPercentage(1),justifyContent:"space-between"}}>
+                    <Text style={{fontFamily:fonts.PoppinsRegular}}>
+                   Mostra tutti
+                     </Text>
+                    <TouchableOpacity>
+                        <Icon1 name='down' size={18} color={colors.black}/>
+                    </TouchableOpacity>
+                </View>
                 </View>
 }
                 {/**end details */}
@@ -325,7 +336,19 @@ export default function AddFood({name,ondeleteOpen,ondeleteClose,onswapOpen,onnu
                         </Text>
                     </View>
                     
-                    <Text style={styles.nuptext2}>*Valori giornalieri percentuali basati su una dieta di 2000 calorie</Text>
+                    <Text style={styles.nuptext2}>
+                    *Valori giornalieri percentuali basati sul tuo fabbisogno di (Val Anamnesi) calorie
+                    </Text>
+
+                <Line/>
+                <View style={{display:"flex",flexDirection:"row",alignItems:"center",marginVertical:RFPercentage(1),justifyContent:"space-between"}}>
+                    <Text style={{fontFamily:fonts.PoppinsRegular}}>
+                   Mostra tutti
+                     </Text>
+                    <TouchableOpacity>
+                        <Icon1 name='down' size={18} color={colors.black}/>
+                    </TouchableOpacity>
+                </View>
                 </View>
 }
                 {/**end details */}

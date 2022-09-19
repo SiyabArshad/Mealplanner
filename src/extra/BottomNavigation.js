@@ -11,6 +11,7 @@ import MIcon from "react-native-vector-icons/MaterialCommunityIcons"
 import {View,Text,Image} from "react-native"
 import Home from '../screens/Home';
 import Community from '../screens/Community';
+import Dairy from '../screens/Dairy';
 const Tab = createBottomTabNavigator();
 export default function Bottomnavigation() {
   return (
@@ -44,7 +45,7 @@ options={{
         }}
 
       />
-       <Tab.Screen name="Dairy" component={Home} 
+       <Tab.Screen name="Dairy" component={Dairy} 
 options={{
     tabBarLabel:"Dairy",
           tabBarIcon: ({color,focused}) => (
