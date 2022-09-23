@@ -25,12 +25,17 @@ import Eliminationbox from '../components/Eliminationbox'
 import Deletebox from '../components/Deletebox'
 import Swap from '../components/Swap'
 import { Modalize } from 'react-native-modalize';
-import Nutreints from '../components/Nutreints'
+import Nutreints from '../components/Dairycomps/Nutreints'
 import SelectDay from '../components/SelectDay'
 import Mealmodal from '../components/Mealmodal'
-
+import DairyDetail from '../components/Dairycomps/DairyDetail'
+import DairyOptions from '../components/Dairycomps/DairyOptions'
+import Sharedetails from '../components/Dairycomps/Sharedetails'
+import CalenderModal from '../components/Dairycomps/CalenderModal'
+import Recipemodal from '../components/Dairycomps/Recipemodal'
 export default function Dairy({navigation}) {
     const[nav,setnav]=React.useState("note")
+    const [details,setdetails]=React.useState(false)
     const [bks,setbks]=React.useState([])
     const setnavfunc=(status)=>{
         setnav(status)
@@ -105,7 +110,55 @@ const onmealOpen = () => {
     modalizemealRef.current?.close();
   };
 //end
-  return (
+//slect meal modalize hook
+const modalizedetailsRef = React.useRef(null);
+const ondetailsOpen = () => {
+    modalizedetailsRef.current?.open();
+  };
+  const ondetailsclose = () => {
+    modalizedetailsRef.current?.close();
+  };
+//end
+//select dairyoption modalize hook
+const modalizedairyoptionRef = React.useRef(null);
+const ondairyoptionOpen = () => {
+  modalizedairyoptionRef.current?.open();
+  };
+  const ondairyoptionclose = () => {
+    modalizedairyoptionRef.current?.close();
+  };
+//end
+//select dairyoption modalize hook
+const modalizeshareoptionRef = React.useRef(null);
+const onshareoptionOpen = () => {
+  modalizeshareoptionRef.current?.open();
+  };
+  const onshareoptionclose = () => {
+    modalizeshareoptionRef.current?.close();
+  };
+//end
+//select CALENDER MODAL modalize hook
+const modalizecalenderRef = React.useRef(null);
+const oncalendermodalOpen = () => {
+  modalizecalenderRef.current?.open();
+  };
+  const oncalendermodalclose = () => {
+    modalizecalenderRef.current?.close();
+  };
+//end
+//select CALENDER MODAL modalize hook
+const modalizerecipeRef = React.useRef(null);
+const onrecipeOpen = () => {
+  modalizerecipeRef.current?.open();
+  };
+  const onrecipeclose = () => {
+    modalizerecipeRef.current?.close();
+  };
+//end
+const changeingstateofdetails=(status)=>{
+  setdetails(status)
+}
+ return (
     <SafeAreaView style={{ backgroundColor:colors.white,flex:1}}>
         <StatusBar translucent backgroundColor={"transparent"}></StatusBar>
         <Modalize adjustToContentHeight={true} ref={modalizeshareRef} >
@@ -124,7 +177,10 @@ const onmealOpen = () => {
         <Swap closefunc={onswapclose}/>
         </Modalize>
         <Modalize adjustToContentHeight={true} ref={modalizenutRef} >
-        <Nutreints closefunc={onnutclose} ondayOpen={ondayOpen}/>
+        <Nutreints openfunc1={onrecipeOpen} closefunc={onnutclose} ondayOpen={ondayOpen}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizerecipeRef} >
+        <Recipemodal openfunc={onrecipeOpen} closefunc={onrecipeclose} />
         </Modalize>
         <Modalize adjustToContentHeight={true} ref={modalizedayRef} >
         <SelectDay onmealOpen={onmealOpen} closefunc={ondayclose}/>
@@ -132,10 +188,22 @@ const onmealOpen = () => {
         <Modalize adjustToContentHeight={true} ref={modalizemealRef} >
         <Mealmodal openfunc={onmealOpen} closefunc={onmealclose}/>
         </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizedetailsRef} >
+        <DairyDetail calenderopen={oncalendermodalOpen} shareoptionclose={onshareoptionclose} shareoptionopen={onshareoptionOpen} closefunc={ondetailsclose} openfunc={ondetailsOpen}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizedairyoptionRef} >
+        <DairyOptions navigation={navigation}   closefunc={ondairyoptionclose} openfunc={ondairyoptionOpen}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizeshareoptionRef} >
+        <Sharedetails navigation={navigation} closefunc={onshareoptionclose} openfunc={onshareoptionOpen}/>
+        </Modalize>
+        <Modalize adjustToContentHeight={true} ref={modalizecalenderRef} >
+        <CalenderModal openprevfunc={ondetailsOpen} navigation={navigation} closefunc={oncalendermodalclose} openfunc={oncalendermodalOpen}/>
+        </Modalize>
     <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false} horizontal={false}>
-    <Topbar navigation={navigation}/>
+    <Topbar openfunc={ondetailsOpen} navigation={navigation}/>
     <Week/>
-    <TopNav navfunc={setnavfunc}/>
+    <TopNav  navfunc={setnavfunc}/>
     <Line/>
     {
         nav==="note"&&
@@ -207,7 +275,7 @@ const onmealOpen = () => {
     </>
 }
     </ScrollView>
-    <TouchableOpacity style={styles.addbtn} onPress={()=>navigation.navigate("addplan")}>
+    <TouchableOpacity style={styles.addbtn} onPress={()=>ondairyoptionOpen()}>
             <Icon2 name='plus' color={colors.white} size={30}/>
         </TouchableOpacity>
     </SafeAreaView>

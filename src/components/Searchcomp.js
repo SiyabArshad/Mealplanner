@@ -8,6 +8,7 @@ import Icon2 from "react-native-vector-icons/Feather"
 import Icon3 from "react-native-vector-icons/Ionicons"
 import Icon4 from "react-native-vector-icons/Entypo"
 import Line from './Line'
+import Ficon from "react-native-vector-icons/MaterialCommunityIcons"
 import Searchcard from './Searchcard'
 export default function Searchcomp({navigation,spchange}) {
     const [search,setsearch]=React.useState("")
@@ -47,10 +48,34 @@ export default function Searchcomp({navigation,spchange}) {
           Lasciati ispirare da Oreegano
           </Text>
           <View style={{marginHorizontal:RFPercentage(2),marginBottom:RFPercentage(1)}}>
-          <Image source={require("../Assets/rcbtn.png")}/>
-          <Image source={require("../Assets/ing.png")}/>
-          <Image source={require("../Assets/pianibtn.png")}/>
-          </View>
+          <View style={{display:'flex',margin:RFPercentage(2)}}>
+          <TouchableOpacity  style={{display:"flex",flexDirection:"row",alignItems:"center",paddingVertical:RFPercentage(1)
+          ,paddingHorizontal:RFPercentage(1.2),backgroundColor:colors.white,width:RFPercentage(17),borderRadius:RFPercentage(1.8),
+          elevation:2,shadowColor:colors.white,shadowOffset:{width:5,height:5},shadowOpacity:0.9,shadowRadius:10,
+          marginVertical:RFPercentage(1)
+          }}>
+                <Ficon name='noodles' size={24} color={colors.black}/>
+                <Text style={{marginLeft:RFPercentage(1),fontFamily:fonts.PoppinsSemiBold,fontSize:RFPercentage(2.2),color:colors.black }}>Ricette</Text>
+            </TouchableOpacity>
+            <TouchableOpacity  style={{display:"flex",flexDirection:"row",alignItems:"center",paddingVertical:RFPercentage(1)
+          ,paddingHorizontal:RFPercentage(1.2),backgroundColor:colors.white,width:RFPercentage(25),borderRadius:RFPercentage(1.8),
+          elevation:2,shadowColor:colors.white,shadowOffset:{width:5,height:5},shadowOpacity:0.9,shadowRadius:10
+          ,marginVertical:RFPercentage(1)
+          }}>
+                <Ficon name='fruit-pineapple' size={24} color={colors.black}/>
+                <Text style={{marginLeft:RFPercentage(1),fontFamily:fonts.PoppinsSemiBold,fontSize:RFPercentage(2.2),color:colors.black }}>Ingredienti</Text>
+            </TouchableOpacity>
+            <TouchableOpacity  style={{display:"flex",flexDirection:"row",alignItems:"center",paddingVertical:RFPercentage(1)
+          ,paddingHorizontal:RFPercentage(1.2),backgroundColor:colors.white,width:RFPercentage(30),borderRadius:RFPercentage(1.8),
+          elevation:2,shadowColor:colors.white,shadowOffset:{width:5,height:5},shadowOpacity:0.9,shadowRadius:10
+          ,marginVertical:RFPercentage(1)
+          }}>
+                <Ficon name='square-edit-outline' size={24} color={colors.black}/>
+                <Text style={{marginLeft:RFPercentage(1),fontFamily:fonts.PoppinsSemiBold,fontSize:RFPercentage(2.2),color:colors.black }}>Piani alimentri</Text>
+            </TouchableOpacity>
+        </View>
+
+    </View>
         </ImageBackground>
         </View>
     ))

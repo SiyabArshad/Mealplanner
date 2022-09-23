@@ -7,7 +7,7 @@ import Icon1 from "react-native-vector-icons/AntDesign"
 import Icon2 from "react-native-vector-icons/Feather"
 import Iionic from "react-native-vector-icons/Ionicons"
 import EIcon from "react-native-vector-icons/Entypo"
-export default function Topbar({navigation}) {
+export default function Topbar({navigation,openfunc}) {
   
   return (
     <View style={styles.cont1}>
@@ -19,7 +19,7 @@ export default function Topbar({navigation}) {
         <TouchableOpacity onPress={()=>navigation.navigate("history")} style={styles.cont2btn}>
           <Icon1 name='calendar' size={24} color={colors.black} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.cont2btn}>
+        <TouchableOpacity style={styles.cont2btn} onPress={openfunc}>
           <EIcon name='dots-three-vertical' size={20} color={colors.black} />
         </TouchableOpacity>
       </View>

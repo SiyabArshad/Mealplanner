@@ -11,6 +11,7 @@ const colors={
     orange2:"rgba(255, 115, 0,0.3)",
     magenta:"#D31930",
     brown:"#E2DAD4",
+    blue:"#0074EE",
     transgreen:"rgba(165, 237, 211,0.5)",
     transgrey:"rgba(220, 227, 225,0.5)",
     transgrey2:"rgba(220, 227, 225,0.7)",
